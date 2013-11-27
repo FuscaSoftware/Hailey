@@ -10,21 +10,14 @@ error_reporting(E_ALL);
 //===============================================
 //Please configure via .htaccess or httpd.conf
 
-//===============================================
-// Madatory KISSMVC Settings (please configure)
-//===============================================
-define('APP_PATH','app/'); //with trailing slash pls
-define('WEB_FOLDER','/jsmall/'); //with trailing slash pls
-
-//===============================================
-// Other Settings
-//===============================================
+define('APP_PATH','app/'); //with trailing slash pls - this is where your content stays
+define('WEB_FOLDER','/yourDIR/'); //with trailing slash pls
 $GLOBALS['sitename']='jsmall - Small PHP MVC Framework';
 
 //===============================================
-// Includes
+// Includes the Framework classes
 //===============================================
-require('jsmall.php');
+require('jsmall/jsmall.php');
 
 //===============================================
 // Session

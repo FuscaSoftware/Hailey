@@ -1,5 +1,7 @@
 <?php
-require('jsmall_core.php');
+require('orm.php');
+require('controller.php');
+require('view.php');
 
 //===============================================================
 // Model/ORM
