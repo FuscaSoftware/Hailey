@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 
 define('APP_PATH','app/'); //with trailing slash pls - this is where your content stays
 define('WEB_FOLDER','/yourDIR/'); //with trailing slash pls
-$GLOBALS['sitename']='jsmall - Small PHP MVC Framework';
+
 
 //===============================================
 // Includes the Framework classes
@@ -42,25 +42,28 @@ function custom_error($msg='') {
 //===============================================
 // Database
 //===============================================
-/*
+
 function getdbh() {
 	if (!isset($GLOBALS['dbh']))
+		$config = new Config();
+		$dbhost = $config->get_config('dbhost');
+		$dbuser = $config->get_config('dbuser');
+		$dbpass = $config->get_config('dbpass');
+		$dbname = $config->get_config('dbname');
 		try {
-		//$GLOBALS['dbh'] = new PDO('sqlite:'.APP_PATH.'db/jsmallDB.sqlite');
-		//$GLOBALS['dbh'] = new PDO('mysql:host=localhost;dbname=dbname', 'username', 'password');
-
+			$GLOBALS['dbh'] = new PDO('mysql:host='.$dbhost.';dbname='.$dbname, $dbuser, $dbpass);
 		} catch (PDOException $e) {
 			die('Connection failed: '.$e->getMessage());
 		}
 	return $GLOBALS['dbh'];
 }
-*/
+
 
 //===============================================
 // Autoloading for Business Classes
 //===============================================
 // Assumes Model Classes start with capital letters and Helpers start with lower case letters
-/*
+
 function __autoload($classname) {
 	$a=$classname[0];
 	if ($a >= 'A' && $a <='Z')
@@ -68,7 +71,7 @@ function __autoload($classname) {
 	else
 		require_once(APP_PATH.'helpers/'.$classname.'.php');  
 	}
-*/
+
 
 //===============================================
 // Start the controller

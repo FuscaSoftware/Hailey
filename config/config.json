@@ -1,0 +1,8 @@
+{"config": {
+	"sitename": "Demosite",
+	"dbname": "testdb",
+	"dbuser": "root",
+	"dbpass": "1234",
+	"dbhost": "127.0.0.1"
+	}
+}

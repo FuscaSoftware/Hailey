@@ -1,5 +1,5 @@
 <html>
-<head><title><?php echo $GLOBALS['sitename'];?></title></head>
+<head><title><?php echo $sitename;?></title></head>
 <body>
 <h1><?php echo $msg;?></h1>
 <h2><?php echo $name;?></h2>
