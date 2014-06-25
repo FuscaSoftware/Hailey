@@ -13,6 +13,8 @@ error_reporting(E_ALL);
 define('APP_PATH','app/'); //with trailing slash pls - this is where your content stays
 define('WEB_FOLDER','/yourDIR/'); //with trailing slash pls
 
+define('WEB_DOMAIN','http://localhost'); //with http:// and NO trailing slash pls
+define('VIEW_PATH','app/views/'); //with trailing slash pls
 
 //===============================================
 // Includes the Framework classes
@@ -39,24 +41,6 @@ function custom_error($msg='') {
 	die(View::do_fetch(APP_PATH.'errors/custom_error.php',$vars));
 }
 
-//===============================================
-// Database
-//===============================================
-
-function getdbh() {
-	if (!isset($GLOBALS['dbh']))
-		$config = new Config();
-		$dbhost = $config->get_config('dbhost');
-		$dbuser = $config->get_config('dbuser');
-		$dbpass = $config->get_config('dbpass');
-		$dbname = $config->get_config('dbname');
-		try {
-			$GLOBALS['dbh'] = new PDO('mysql:host='.$dbhost.';dbname='.$dbname, $dbuser, $dbpass);
-		} catch (PDOException $e) {
-			die('Connection failed: '.$e->getMessage());
-		}
-	return $GLOBALS['dbh'];
-}
 
 
 //===============================================
