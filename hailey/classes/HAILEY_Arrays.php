@@ -31,12 +31,26 @@
  */
 abstract class HAILEY_Arrays {
 
+    /**
+     * arrayMostUsedValue returns the most used string or number from an array
+     * 
+     * @param array $array the array with several values
+     * @return integer with key of most used value
+     */
     function arrayMostUsedValue($array) {
         $c = array_count_values($array);
         return array_search(max($c), $c);
     }
 
-    function recursive_array_field_search($array, $field, $needle) {
+    /**
+     *  recursiveArrayFieldSearch returns the key of an searched value in selected fields of an array
+     * 
+     * @param array $array the array with several values
+     * @param string $field the fieldname where to find the value
+     * @param string $needle the searchterm you hope to find
+     * @return integer with key of the the array or flase
+     */
+    function recursiveArrayFieldSearch($array, $field, $needle) {
         foreach ($array as $key => $array) {
             if ($array[$field] === $needle) {
                 return $key;
@@ -45,6 +59,13 @@ abstract class HAILEY_Arrays {
         return false;
     }
 
+    /**
+     *   recursiveArraySearch returns the key of an searched value in all fields of an array
+     * 
+     * @param array $array the array with several values
+     * @param string $needle the searchterm you hope to find
+     * @return integer with key of the the array or flase
+     */
     function recursiveArraySearch($needle, $haystack) {
         foreach ($haystack as $key => $value) {
             $current_key = $key;
@@ -108,6 +129,12 @@ abstract class HAILEY_Arrays {
         return $found;
     }
 
+    /**
+     *   removeDuplicate remove all duplicted values from an array
+     * 
+     * @param array $array the array with several values
+     * @return array without duplicates
+     */
     function removeDuplicate($arr) {
         $_a = array();
         while (list($key, $val) = each($arr)) {
