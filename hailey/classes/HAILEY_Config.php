@@ -29,12 +29,20 @@
  *
  * @author s.kalski
  */
+abstract class HAILEY_Config {
 
-abstract class HAILEY_Config  {
-	function get_config($value){
-		$jsonFile = file_get_contents('./config/config.json');
-		$jsonConfig=json_decode($jsonFile,true);
-		return $jsonConfig['config'][$value];
-	}
+    /**
+     *   return the content of an specific value in config.json
+     *  the configuration you'll find in /config/config.json
+     * 
+     * @author Swen Kalski
+     * @param string $value the value of the json file
+     * @return string with the content of value
+     */
+    function getConfig($value) {
+        $jsonFile = file_get_contents('./config/config.json');
+        $jsonConfig = json_decode($jsonFile, true);
+        return $jsonConfig['config'][$value];
+    }
+
 }
-

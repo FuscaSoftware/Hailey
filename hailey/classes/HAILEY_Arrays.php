@@ -34,6 +34,7 @@ abstract class HAILEY_Arrays {
     /**
      * arrayMostUsedValue returns the most used string or number from an array
      * 
+     * @author Swen Kalski
      * @param array $array the array with several values
      * @return integer with key of most used value
      */
@@ -45,6 +46,7 @@ abstract class HAILEY_Arrays {
     /**
      *  recursiveArrayFieldSearch returns the key of an searched value in selected fields of an array
      * 
+     * @author Swen Kalski
      * @param array $array the array with several values
      * @param string $field the fieldname where to find the value
      * @param string $needle the searchterm you hope to find
@@ -62,6 +64,7 @@ abstract class HAILEY_Arrays {
     /**
      *   recursiveArraySearch returns the key of an searched value in all fields of an array
      * 
+     * @author Swen Kalski
      * @param array $array the array with several values
      * @param string $needle the searchterm you hope to find
      * @return integer with key of the the array or flase

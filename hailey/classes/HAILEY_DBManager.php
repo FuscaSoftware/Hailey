@@ -56,6 +56,12 @@ abstract class HAILEY_DBManager {
         return call_user_func($this->dbhfnname);
     }
 
+    /**
+     *   return all tables of the in configfile selected database
+     * 
+     * @author Swen Kalski
+     * @return array with all tables
+     */
     function readTables() {
         $dbh = $this->getdbh();
         $stmt = $dbh->prepare('show tables');
@@ -63,13 +69,27 @@ abstract class HAILEY_DBManager {
         return $stmt->fetchALL(PDO::FETCH_ASSOC);
     }
 
+     /**
+     *   return all colums of an selected table
+     * 
+     * @author Swen Kalski
+     * @param string $table name of the table
+     * @return array with all colums of table
+     */
     function getCols($table) {
         $dbh = $this->getdbh();
         $stmt = $dbh->prepare('SHOW COLUMNS FROM ' . $table);
         $stmt->execute();
         return $stmt->fetchALL(PDO::FETCH_ASSOC);
     }
-
+    
+     /**
+     *   return all private key of an selected table
+     * 
+     * @author Swen Kalski
+     * @param string $table name of the table
+     * @return array with private key colum of table
+     */
     function getPK($table) {
         $dbh = $this->getdbh();
         $stmt = $dbh->prepare("SHOW INDEX FROM $table WHERE Key_name = 'PRIMARY'");
@@ -77,20 +97,34 @@ abstract class HAILEY_DBManager {
         return $stmt->fetchALL(PDO::FETCH_ASSOC);
     }
     
-   function tableExists($table) {
+     /**
+     *   proof if table exists
+     * 
+     * @author Swen Kalski
+     * @param string $table name of the table
+     * @return array with private key of table
+     */
+    function tableExists($table) {
         $dbh = $this->getdbh();
         $stmt = $dbh->prepare("SHOW INDEX FROM $table WHERE Key_name = 'PRIMARY'");
         $stmt->execute();
         return $stmt->fetchALL(PDO::FETCH_ASSOC);
     }
-
+    
+     /**
+     *   creates an model class on the fly
+     * 
+     * @author Swen Kalski
+     * @param string $table name of the table
+     * @return class modell to futher use by controller
+     */
     function createModel($table) {
         $pk = $this->getPK($table);
         $cols = $this->getCols($table);
         try {
             $class = "class " . $table . " extends H_Model { "
                     . "function " . $table . "() { "
-                    . "parent::__construct('" . $pk[0]["Column_name"]. "','" . $table . "','getdbh');";
+                    . "parent::__construct('" . $pk[0]["Column_name"] . "','" . $table . "','getdbh');";
             foreach ($cols as $row => $key) {
                 $class .= '$this->rs[\'' . $key['Field'] . '\']= \'\';';
             }
@@ -101,5 +135,5 @@ abstract class HAILEY_DBManager {
             trigger_error('Could not connect to MySQL database. ' . $pe->getMessage(), E_USER_ERROR);
         }
     }
+
 }
-    
