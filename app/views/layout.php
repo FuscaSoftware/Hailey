@@ -4,23 +4,56 @@
             body {
                 font-family: helvetica;
             }
-            
+
             p {
                 padding: 20px;
             }
-            .stitched {
-                padding: 20px;
-                margin: 10px;
-                background: #057eff;
+            .ribbon {
+                font-size: 16px !important;
+                /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+                width: 50%;
+
+                position: relative;
+                background: #ba89b6;
                 color: #fff;
-                font-size: 21px;
-                font-weight: bold;
-                line-height: 1.3em;
-                border: 2px dashed #fff;
-                border-radius: 10px;
-                box-shadow: 0 0 0 4px #0a8dff, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-                text-shadow: -1px -1px #1319aa;
-                font-weight: normal;
+                text-align: center;
+                padding: 1em 2em; /* Adjust to suit */
+                margin: 2em auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+            }
+            .ribbon:before, .ribbon:after {
+                content: "";
+                position: absolute;
+                display: block;
+                bottom: -1em;
+                border: 1.5em solid #986794;
+                z-index: -1;
+            }
+            .ribbon:before {
+                left: -2em;
+                border-right-width: 1.5em;
+                border-left-color: transparent;
+            }
+            .ribbon:after {
+                right: -2em;
+                border-left-width: 1.5em;
+                border-right-color: transparent;
+            }
+            .ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+                content: "";
+                position: absolute;
+                display: block;
+                border-style: solid;
+                border-color: #804f7c transparent transparent transparent;
+                bottom: -1em;
+            }
+            .ribbon .ribbon-content:before {
+                left: 0;
+                border-width: 1em 0 0 1em;
+            }
+            .ribbon .ribbon-content:after {
+                right: 0;
+                border-width: 1em 1em 0 0;
             }
             .wrapper {
                 margin: 50px auto;
@@ -35,7 +68,7 @@
                 z-index: 90;
             }
 
-            .ribbon-wrapper-green {
+            .ribbon2-wrapper-green {
                 width: 85px;
                 height: 88px;
                 overflow: hidden;
@@ -44,7 +77,7 @@
                 right: -3px;
             }
 
-            .ribbon-green {
+            .ribbon2-green {
                 font: bold 15px Sans-Serif;
                 color: #333;
                 text-align: center;
@@ -70,7 +103,7 @@
                 box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
             }
 
-            .ribbon-green:before, .ribbon-green:after {
+            .ribbon2-green:before, .ribbon2-green:after {
                 content: "";
                 border-top:   3px solid #6e8900;   
                 border-left:  3px solid transparent;
@@ -79,24 +112,26 @@
                 bottom: -3px;
             }
 
-            .ribbon-green:before {
+            .ribbon2-green:before {
                 left: 0;
             }
-            .ribbon-green:after {
+            .ribbon2-green:after {
                 right: 0;
             }
         </style>
     </head>
     <body>
         <div class="wrapper">
-            <div class="ribbon-wrapper-green"><div class="ribbon-green">Beta</div></div>
-            <div class="stitched">
-                <h2><?php echo $name; ?></h2>
-                <sup>Version 0.2</sup>
-            </div>
+            <div class="ribbon2-wrapper-green"><div class="ribbon2-green">Beta</div></div>
+            <h1 class="ribbon">
+                <strong class="ribbon-content"><?php echo $name; ?><br><sup>it works!</sup></strong>
+            </h1>
             <p>Everything is working fine.<br> 
                 Now you can start to code your next awesome project. </p>
-            
+            <p>Read the documentation at <a href="http://lambda-code.github.io/Hailey/">Github</a>
+                and check for updates.</p>
+            <p><img src="haileylogo.png" height="400">
+            </p>
         </div>
     </body>
 </html>
