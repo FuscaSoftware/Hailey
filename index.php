@@ -12,8 +12,8 @@ error_reporting(E_ALL);
 //Please configure via .htaccess or httpd.conf
 
 define('APP_PATH', 'app/'); //with trailing slash pls - this is where your content stays
-define('WEB_FOLDER', '/jsmall/'); //with trailing slash pls
-$GLOBALS['sitename'] = 'jsmall - Small PHP MVC Framework';
+define('WEB_FOLDER', '/Hailey/'); //with trailing slash pls
+$GLOBALS['sitename'] = 'Hailey Framework Beta';
 
 //===============================================
 // Includes the Framework classes
