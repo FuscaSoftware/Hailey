@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hailey Framework by lambda-code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Hailey Framework</h1>
+      <h2 class="project-tagline">A (M)VC Framework to create complex MVC related web projects</h2>
+      <a href="https://github.com/lambda-code/Hailey" class="btn">View on GitHub</a>
+      <a href="https://github.com/lambda-code/Hailey/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/lambda-code/Hailey/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h3>
+<a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is it?</h3>
+
+<p>This is a very tiny mvc framework within all needing to design small one page website up to complex search engines and social networks with ease. Unlike overloaded monster like YII2 or ZEND, this framework lead to success within 5 minutes.</p>
+
+<h4>
+<a id="simple" class="anchor" href="#simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple</h4>
+
+<p>HAILEY is an very small library and framework for your projects. It does no matter how big or how small your project will be.</p>
+
+<h4>
+<a id="minimalist" class="anchor" href="#minimalist" aria-hidden="true"><span class="octicon octicon-link"></span></a>Minimalist</h4>
+
+<p>Only the real needed essentials for coders are here. It's editable with an ease.</p>
+
+<h4>
+<a id="robust" class="anchor" href="#robust" aria-hidden="true"><span class="octicon octicon-link"></span></a>Robust</h4>
+
+<p>Core code is very small and can be audited and secured quickly, also by beginners. It's a good place to start from here.
+SQL injection would be unable by protection with PDO.</p>
+
+<h4>
+<a id="unobtrusive" class="anchor" href="#unobtrusive" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unobtrusive</h4>
+
+<p>No restrictions on use of other libraries like PEAR or another ORM like Doctrine.
+All PHP globals are accessible.</p>
+
+<h4>
+<a id="flexible" class="anchor" href="#flexible" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flexible</h4>
+
+<p>PDO abstraction allows choice of databases.
+Core MVC classes can be extended or overriden easily using object oriented inheritance.
+Choice of using procedural or object-oriented code or both! This was a real hard decision and i'm sure,
+that many hardcore coders want me dead by now :)</p>
+
+<h4>
+<a id="fast" class="anchor" href="#fast" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fast</h4>
+
+<p>No feature, code or framework bloat at all.
+Even faster when used with a PHP Accelerator like APC.</p>
+
+<h4>
+<a id="friendly-url" class="anchor" href="#friendly-url" aria-hidden="true"><span class="octicon octicon-link"></span></a>Friendly URL</h4>
+
+<p>It uses Human/Robot friendly URLs.
+Also upgrade friendly, simply overwrite of the old core file with the new one!</p>
+
+<h3>
+<a id="whats-the-name-for" class="anchor" href="#whats-the-name-for" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the name for?</h3>
+
+<p>HAILEY is named by the daughter of Swen Kalski who died in Summer 2015 and is part of huge websites like spar-mit.com or fappub.com. Also the Website of Swen lambda-code.com was build with it.</p>
+
+<h3>
+<a id="lets-start" class="anchor" href="#lets-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Let's start</h3>
+
+<h4>
+<a id="the-model-orm-class" class="anchor" href="#the-model-orm-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Model ORM CLASS</h4>
+
+<p>HAILEY provides a "Model" ORM class to let you map your database tables as PHP objects. It requires PHP5.
+Data objects extend the Model class and have five functions: Create, Retrieve, Update, Delete and Exists.</p>
+
+<p>Let's start with a little "users" table, with the following fields: 
+uid (autoincremented primary key)
+username
+password 
+fullname 
+created_date</p>
+
+<p>Now let's build a Model. By the Way - this is not a tutorial for save Logins. Don't use it, for real Projects.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1">    <span class="pl-k">&lt;</span>?<span class="pl-c1">php</span></span>
+<span class="pl-s1">    <span class="pl-k">class</span> <span class="pl-en">User</span> <span class="pl-k">extends</span> <span class="pl-e">H_Model</span> {</span>
+<span class="pl-s1">    <span class="pl-k">function</span> <span class="pl-en">User</span>() {</span>
+<span class="pl-s1">    <span class="pl-c">//call parent with primary key name "uid", table name "users"</span></span>
+<span class="pl-s1">    <span class="pl-c">//and function that returns the pdo handler named "getdbh"</span></span>
+<span class="pl-s1">    <span class="pl-k">parent</span><span class="pl-k">::</span>__construct(<span class="pl-s"><span class="pl-pds">'</span>uid<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>users<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>getdbh<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">    <span class="pl-c">//list of table fields below, need not contain all fields in table.</span></span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>uid<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>username<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>fullname<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>created_dt<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span></pre></div>
+
+<p>If you are an real lazy coder.
+HAILEY can create the object for you. The only thing you need is the name of the table.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1">    <span class="pl-k">&lt;</span>?<span class="pl-c1">php</span></span>
+<span class="pl-s1">    <span class="pl-k">class</span> <span class="pl-en">User</span> <span class="pl-k">extends</span> <span class="pl-e">H_Model</span> {</span>
+<span class="pl-s1">    <span class="pl-k">function</span> <span class="pl-en">User</span>() {</span>
+<span class="pl-s1">    <span class="pl-c">//call parent with primary key name "uid", table name "users"</span></span>
+<span class="pl-s1">    <span class="pl-c">//and function that returns the pdo handler named "getdbh"</span></span>
+<span class="pl-s1">    <span class="pl-k">parent</span><span class="pl-k">::</span>__construct(<span class="pl-s"><span class="pl-pds">'</span>uid<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>users<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>getdbh<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">    <span class="pl-c">//list of table fields below, need not contain all fields in table.</span></span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>uid<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>username<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>fullname<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">rs</span>[<span class="pl-s"><span class="pl-pds">'</span>created_dt<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span></pre></div>
+
+<p>For the Model to work, a global function that returns the PDO needs to be defined.
+In this case we got an table called User:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">                    <span class="pl-smi">$dbm</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">H_DBM</span>();</span>
+<span class="pl-s1">                    <span class="pl-smi">$dbm</span><span class="pl-k">-&gt;</span>createModel(<span class="pl-s"><span class="pl-pds">'</span>User<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">                    <span class="pl-smi">$user</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">User</span>();</span>
+<span class="pl-s1">                    <span class="pl-smi">$user_array</span> <span class="pl-k">=</span> <span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>retrieve_many();</span>
+<span class="pl-s1"></span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span></pre></div>
+
+<p>I think this is an really lazy-mode.</p>
+
+<p>Here a few snippets to se how the Model works</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c">//Create</span></span>
+<span class="pl-s1"><span class="pl-smi">$user</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">User</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>set(<span class="pl-s"><span class="pl-pds">'</span>username<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>user<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>set(<span class="pl-s"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>create();</span>
+<span class="pl-s1"><span class="pl-smi">$uid</span><span class="pl-k">=</span><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>get(<span class="pl-s"><span class="pl-pds">'</span>uid<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//Update</span></span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>set(<span class="pl-s"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>newpassword<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>update();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//Retrieve, Delete, Exists</span></span>
+<span class="pl-s1"><span class="pl-smi">$user</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">User</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>retrieve(<span class="pl-smi">$uid</span>);</span>
+<span class="pl-s1"><span class="pl-k">if</span> (<span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>exists())</span>
+<span class="pl-s1">    <span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>delete();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//Retrieve based on other criteria than the PK</span></span>
+<span class="pl-s1"><span class="pl-smi">$user</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">User</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>retrieve_one(<span class="pl-s"><span class="pl-pds">"</span>username=?<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">'</span>yetanotherusr<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>retrieve_one(<span class="pl-s"><span class="pl-pds">"</span>username=? AND password=? AND status='enabled'<span class="pl-pds">"</span></span>,<span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">'</span>erickoh<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>123456<span class="pl-pds">'</span></span>));</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//Return an array of Model objects</span></span>
+<span class="pl-s1"><span class="pl-smi">$user</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">User</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$user_array</span> <span class="pl-k">=</span> <span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>retrieve_many(<span class="pl-s"><span class="pl-pds">"</span>username LIKE ?<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">'</span>eric%<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-k">foreach</span> (<span class="pl-smi">$user_array</span> <span class="pl-k">as</span> <span class="pl-smi">$user</span>)</span>
+<span class="pl-s1">    <span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>delete();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//Return selected fields as array</span></span>
+<span class="pl-s1"><span class="pl-smi">$user</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">User</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$result_array</span> <span class="pl-k">=</span> <span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>select(<span class="pl-s"><span class="pl-pds">"</span>username,email<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>username LIKE ?<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">'</span>eric%<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-c1">print_r</span>(<span class="pl-smi">$result_array</span>);</span></pre></div>
+
+<h4>
+<a id="controller-class" class="anchor" href="#controller-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controller Class</h4>
+
+<p>In HAILEY, the Controller looks at the HTTP Request and then route the program control to the appropriate function.
+It allows the use of Search Engine Friendly URLs on your web application.</p>
+
+<blockquote>
+<p>For the Controller to work, mod_rewrite is required and has to be configured via the webserver config file or via an .htaccess file.</p>
+</blockquote>
+
+<p>How it works:
+Parse the HTTP Request URL
+Includes a php file based on (1)
+Calls a php function included from (2)</p>
+
+<p>Some examples:</p>
+
+<p><a href="http://mydomain.com/example-controller/action/param1/param2">http://mydomain.com/example-controller/action/param1/param2</a>
+With the above URL, it includes a file example-controller/action.php and calls the function _action(param1,param2)</p>
+
+<p><a href="http://mydomain.com/example-controller2/action2">http://mydomain.com/example-controller2/action2</a>
+With the above URL, it includes a file example-controller2/action2.php and calls the function _action2()</p>
+
+<p><a href="http://mydomain.com/example-controller2/action2/">http://mydomain.com/example-controller2/action2/</a>
+With the above URL, it includes a file example-controller2/action2.php and calls the function _action2('')</p>
+
+<p><a href="http://mydomain.com/example-controller/action/param1/?a=1&amp;b=2">http://mydomain.com/example-controller/action/param1/?a=1&amp;b=2</a>
+With the above URL, it includes a file example-controller/action.php and calls the function _action(param1,'?a=1&amp;b=2')
+The querystring works and the global variable $_GET = array('a'=&gt;1, 'b'=&gt;2). 
+Your function does not have to define the second parameter.</p>
+
+<p>This is how the Controller is called:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$controller</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">H_Controller</span>(<span class="pl-s"><span class="pl-pds">'</span>../app/controllers/<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>main<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>index<span class="pl-pds">'</span></span>); </span>
+<span class="pl-s1"><span class="pl-smi">$controller</span><span class="pl-k">-&gt;</span>parse_http_request()<span class="pl-k">-&gt;</span>route_request();</span></pre></div>
+
+<h4>
+<a id="view-class" class="anchor" href="#view-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>View Class</h4>
+
+<p>The templates are plain PHP files, and so normal PHP code can be used and the PHP global variables are accessible together with any extra variables you have passed in as a parameter in the form of an associative array.</p>
+
+<p>Let's say you have a template file named 
+welcome.tpl.php with the following contents:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">&lt;</span><span class="pl-c1">html</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">  <span class="pl-k">&lt;</span><span class="pl-c1">head</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">    <span class="pl-k">&lt;</span><span class="pl-c1">title</span><span class="pl-k">&gt;&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">echo</span> <span class="pl-smi">$pagename</span>;</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>&lt;/<span class="pl-ent">title</span>&gt;
+  &lt;/<span class="pl-ent">head</span>&gt;
+  &lt;<span class="pl-ent">body</span>&gt;
+    &lt;<span class="pl-ent">h1</span>&gt;Welcome <span class="pl-pse">&lt;?php</span><span class="pl-s1"> <span class="pl-c1">echo</span> <span class="pl-smi">$username</span>;</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>,&lt;/<span class="pl-ent">h1</span>&gt;
+    &lt;<span class="pl-ent">p</span>&gt;The time is now <span class="pl-pse">&lt;?php</span><span class="pl-s1"> <span class="pl-c1">echo</span> <span class="pl-c1">date</span>(<span class="pl-s"><span class="pl-pds">"</span>Y-m-d H:i:s<span class="pl-pds">"</span></span>);</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>&lt;/<span class="pl-ent">p</span>&gt;
+  &lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+
+<p>This is how you use call template file using a simple function call:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-smi">$vars</span> <span class="pl-k">=</span> <span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>pagename<span class="pl-pds">"</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>Welcome!<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>yetanotherusr<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-c1">View</span><span class="pl-k">::</span>do_fetch(<span class="pl-s"><span class="pl-pds">"</span>/path/to/welcome.tpl.php<span class="pl-pds">"</span></span>,<span class="pl-smi">$vars</span>);</span>
+<span class="pl-s1"></span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span></pre></div>
+
+<p>Same result as above, but using object-oriented code:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-smi">$vars</span> <span class="pl-k">=</span> <span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>pagename<span class="pl-pds">"</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>Welcome!<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>yetanotherusr<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1">    <span class="pl-smi">$view</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">H_View</span>(<span class="pl-s"><span class="pl-pds">"</span>/path/to/welcome.tpl.php<span class="pl-pds">"</span></span>,<span class="pl-smi">$vars</span>);</span>
+<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-smi">$view</span><span class="pl-k">-&gt;</span>fetch();</span>
+<span class="pl-s1"></span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span></pre></div>
+
+<p>Annnnd another way, a little bit easier for beginners</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-smi">$view</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">H_View</span>(<span class="pl-s"><span class="pl-pds">"</span>/path/to/welcome.tpl.php<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1">    <span class="pl-smi">$view</span><span class="pl-k">-&gt;</span>set(<span class="pl-s"><span class="pl-pds">"</span>pagename<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Welcome!<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1">    <span class="pl-smi">$view</span><span class="pl-k">-&gt;</span>set(<span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Eric<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-smi">$view</span><span class="pl-k">-&gt;</span>fetch();</span>
+<span class="pl-s1"></span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span></pre></div>
+
+<h4>
+<a id="other-orm" class="anchor" href="#other-orm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other ORM</h4>
+
+<p>The ORM class is not related to the View-Controller, 
+so you can replace it with another ORM Classes even CouchDB, MongoDB or even POSTgreSQL.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/lambda-code/Hailey">Hailey Framework</a> is maintained by <a href="https://github.com/lambda-code">lambda-code</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
