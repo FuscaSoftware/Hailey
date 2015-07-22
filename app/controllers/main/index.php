@@ -1,13 +1,19 @@
 <?php
-function _index($msg='Hello World!') {
-	$name = 'This is JSMALL MVC framework';
 
-	$config = new Config();
-	$sitename = $config->get_config('sitename');
+function _index() {
 
-	$view = new View(APP_PATH.'views/layout.php');
-	$view->set('msg',$msg);
-	$view->set('name',$name);
-	$view->set('sitename',$sitename);
-	$view->dump();
+    $name = 'HAILEY FRAMEWORK';
+    $view = new H_View(APP_PATH . 'views/layout.php');
+
+    $view->set('name', $name);
+
+    /*
+     * $dbm = new H_DBM();
+     * $dbm->createModel('Users');
+     * $user = new Users();
+     * $user_array = $user->retrieve_many();
+     * *
+     */
+
+    $view->dump();
 }

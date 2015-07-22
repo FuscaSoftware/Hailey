@@ -1,8 +1,10 @@
-{"config": {
-	"sitename": "Demosite",
-	"dbname": "testdb",
-	"dbuser": "root",
-	"dbpass": "1234",
-	"dbhost": "127.0.0.1"
-	}
+{
+    "config": {
+        "sitename": "Demosite",
+        "dbname": "youhub",
+        "dbuser": "root",
+        "dbpass": "",
+        "dbhost": "127.0.0.1",
+        "class_autoload": "true"
+    }
 }
