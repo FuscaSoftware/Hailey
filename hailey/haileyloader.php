@@ -47,10 +47,10 @@ function __autoload($classname) {
     $jsonFile = file_get_contents('./config/config.json');
     $jsonConfig = json_decode($jsonFile, true);
     if ($jsonConfig['config']['class_autoload'] == 'true') {
-        $a = $classname[0];
-        if ($a >= 'A' && $a <= 'Z' && strpos($a, 'HAILEY') !== false)
+        $a = $classname;
+        if ($a >= 'A' && $a <= 'Z' && !preg_match('/HAILEY/',$a))
             require_once(APP_PATH . 'models/' . $classname . '.php');
-        elseif ($a >= 'A' && $a <= 'Z' && strpos($a, 'HAILEY') === false)
+        elseif ($a >= 'A' && $a <= 'Z' && preg_match('/HAILEY/',$a))
             require_once('classes/' . $classname . '.php');
         else
             require_once('helper/' . $classname . '.php');
