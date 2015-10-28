@@ -147,10 +147,10 @@ function custom_error($msg = '') {
 //===============================================
 function getdbh() {
     $config = new H_Config();
-    $dbhost = $config->get_config('dbhost');
-    $dbuser = $config->get_config('dbuser');
-    $dbpass = $config->get_config('dbpass');
-    $dbname = $config->get_config('dbname');
+    $dbhost = $config->getConfig('dbhost');
+    $dbuser = $config->getConfig('dbuser');
+    $dbpass = $config->getConfig('dbpass');
+    $dbname = $config->getConfig('dbname');
     try {
         $dbConnection = new PDO('mysql:host=' . $dbhost . ';dbname=' . $dbname, $dbuser, $dbpass);
     } catch (PDOException $e) {
