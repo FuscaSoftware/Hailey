@@ -1,9 +1,6 @@
 ##Hailey Framework Beta
 ====================
 
-
-![alt tag](https://github.com/lambda-code/Hailey/blob/master/haileylogo.png)
-
 read more:
 http://lambda-code.github.io/Hailey/
 
@@ -14,7 +11,7 @@ social networks with ease.
 ### What is it?
 
 ####Simple
-HAILEY is an very small library and framework for your projects. It does no matter how big or how small your project
+HAILEY is an very small library and framework for web-projects. It does no matter how big or how small your project
 will be.
 ####Downgrade compatibility
 Fell free to make new functions or classes, but in this master it's not alowed to delete old functions
@@ -74,24 +71,6 @@ Now let's build a Model. By the Way - this is not a tutorial for save Logins. Do
 
 If you are an real lazy coder.
 HAILEY can create the object for you. The only thing you need is the name of the table.
-```php
-	<?php
-	class User extends H_Model {
-	function User() {
-	//call parent with primary key name "uid", table name "users"
-	//and function that returns the pdo handler named "getdbh"
-	parent::__construct('uid','users','getdbh');
-	//list of table fields below, need not contain all fields in table.
-	$this->rs['uid'] = '';
-	$this->rs['username'] = '';
-	$this->rs['password'] = '';
-	$this->rs['fullname'] = '';
-	$this->rs['created_dt'] = '';
-	}
-}
-?>
-```
-
 For the Model to work, a global function that returns the PDO needs to be defined.
 In this case we got an table called User:
 ```php
